@@ -42,7 +42,7 @@
             <a class="btn btn-primary" th:href="@{/posts}">Back</a>
             <div sec:authorize="isAuthenticated()" id="submit2">
                 <a class="btn btn-primary" th:href="${'/post/edit/'+post.id}"><i class="fa fa-pencil"></i> Edit</a>
-                <a class="btn btn-danger" th:href="${'/post/delete/'+post.id}"><i class="fa fa-trash-o"></i> Delete</a>
+                <button class="btn btn-danger" href="javascript:void(0)" id="delete-it" th:onclick="'goToURL(\'' +${post.id}+ '\');return false;'" ><i class="fa fa-trash-o"></i> Delete</button>
             </div>
         </form>
     </div>
