@@ -7,7 +7,18 @@
 <div th:replace="layout/layout::lheader('users')"></div>
 
 <div class="container">
-    <p th:utext="#{users.message}">User!</p>
+    <table class="table">
+        <tr>
+            <td><b>id</b></td>
+            <td><b>username</b></td>
+            <td><b>created date</b></td>
+        </tr>
+        <tr th:each="u : ${users}">
+            <td th:text="${u.id}">id*</td>
+            <td th:text="${u.username}">username*</td>
+            <td th:text="${#temporals.format(u.userCreatedDate, 'dd MMM yyyy')}">created date*</td>
+        </tr>
+    </table>
 </div>
 
 <div th:replace="layout/layout::lfooter"></div>

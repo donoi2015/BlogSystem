@@ -5,7 +5,7 @@ import com.dono.crud.blog.model.Reader;
 import java.util.List;
 
 public interface ReaderService {
-    List<Reader> findall();
+    List<Reader> getAll();
 
     Reader getOne(int id);
 

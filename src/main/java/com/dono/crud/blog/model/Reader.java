@@ -41,5 +41,9 @@ public class Reader implements Serializable {
         posts.add(post);
     }
 
+    public int numOfPosts(){
+        return posts.size();
+    }
+
 
 }

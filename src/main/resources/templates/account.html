@@ -7,7 +7,9 @@
 <div th:replace="layout/layout::lheader('account')"></div>
 
 <div class="container">
-
+    <div class="alert alert-info">
+        You need to be logged in to view your account: <a th:href="@{/login}"><b>Click here to log in</b></a>
+    </div>
 </div>
 
 <div th:replace="layout/layout::lfooter"></div>

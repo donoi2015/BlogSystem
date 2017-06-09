@@ -15,7 +15,7 @@ public class ReaderServiceImpl implements ReaderService {
     ReaderRepository readerRepository;
 
     @Override
-    public List<Reader> findall() {
+    public List<Reader> getAll() {
         return readerRepository.findAll();
     }
 
