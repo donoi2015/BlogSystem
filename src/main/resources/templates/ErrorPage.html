@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="layout/layout::lhead('Error')">
+    <title>Welcome to Blog</title>
+</head>
+<body>
+<div th:replace="layout/layout::lheader('error')"></div>
+
+<div class="container">
+    <p th:utext="#{error.message}">Error!</p>
+</div>
+
+<div th:replace="layout/layout::lfooter"></div>
+<th:block th:replace="layout/layout::assets" />
+</body>
+</html>

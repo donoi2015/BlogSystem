@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="layout/layout::lhead('Posts')">
+    <title>Welcome to Blog</title>
+</head>
+<body>
+<div th:replace="layout/layout::lheader('posts')"></div>
+
+<div class="container">
+    <p th:utext="#{posts.message}">Posts!</p>
+
+    <main id="posts" class="col-md-8 col-sm-9">
+        <article th:if="${not #lists.isEmpty(posts)}"
+                 th:each="p : ${posts}">
+            <a th:href="${'/post/view/'+p.id}">
+                <h3 class="title" th:text="${p.title}">Post Title*</h3>
+                <div class="date">
+                    <i>Posted on</i>
+                    <span th:text="${#temporals.format(p.createdDate, 'dd-MMM-yyyy')}">22-May-2016*</span>
+                    <i>by</i>
+                    <span th:text="${p.reader.username}">Dono*</span>
+                </div>
+            </a>
+            <div sec:authorize="isAuthenticated()">
+                <a class="btn btn-primary" th:href="${'/post/edit/'+p.id}"><i class="fa fa-pencil"></i> Edit</a>
+                <a class="btn btn-danger" th:href="${'/post/delete/'+p.id}"><i class="fa fa-trash-o"></i> Delete</a>
+            </div>
+        </article>
+
+        <!-- Pagination Bar -->
+        <div th:fragment='paginationbar' class="col-md-8">
+            <div>
+                <ul class='pagination pagination-centered'>
+                    <li th:class="${page.firstPage}?'disabled':''">
+                        <span th:if='${page.firstPage}'>← First</span>
+                        <a th:if='${not page.firstPage}' th:href='@{${page.url}(page=0,size=${page.size})}'>← First</a>
+                    </li>
+
+                    <li th:class="${page.hasPreviousPage}? '' : 'disabled'">
+                        <span th:if='${not page.hasPreviousPage}'>«</span>
+                        <a th:if='${page.hasPreviousPage}' th:href='@{${page.url}(page=${page.number-2},size=${page.size})}'
+                           title='Go to previous page'>«</a>
+                    </li>
+
+                    <li th:each='item : ${page.items}' th:class="${item.current}? 'active' : ''">
+                        <span th:if='${item.current}' th:text='${item.number}'>1</span>
+                        <a th:if='${not item.current}'
+                           th:href='@{${page.url}(page=${item.number-1},size=${page.size})}'><span th:text='${item.number}'>1</span></a>
+                    </li>
+
+                    <li th:class="${page.hasNextPage}? '' : 'disabled'">
+                        <span th:if='${not page.hasNextPage}'>»</span>
+                        <a th:if='${page.hasNextPage}' th:href='@{${page.url}(page=${page.number},size=${page.size})}'
+                           title='Go to next page'>»</a>
+                    </li>
+
+                    <li th:class="${page.lastPage}? 'disabled' : ''">
+                        <span th:if='${page.lastPage}'>Last →</span>
+                        <a th:if='${not page.lastPage}'
+                           th:href='@{${page.url}(page=${page.totalPages - 1},size=${page.size})}'>Last →</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </main>
+</div>
+
+<div th:replace="layout/layout::lfooter"></div>
+<th:block th:replace="layout/layout::assets"/>
+</body>
+</html>

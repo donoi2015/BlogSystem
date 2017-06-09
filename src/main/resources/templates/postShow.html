@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="layout/layout::lhead('Post Details')">
+    <title>Welcome to Blog</title>
+</head>
+<body>
+<div th:replace="layout/layout::lheader('view')"></div>
+
+<div class="container">
+    <h2>Post Details</h2>
+    <div>
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Post Id:</label>
+                <div class="col-sm-10">
+                    <p class="form-control-static" th:text="${post.id}">post id*</p></div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Post title:</label>
+                <div class="col-sm-10">
+                    <p class="form-control-static" th:text="${post.title}">title*</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Price:</label>
+                <div class="col-sm-10">
+                    <p class="form-control-static" th:text="${post.body}">Body*</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Created by:</label>
+                <div class="col-sm-10">
+                    <p class="form-control-static" th:text="${post.reader.username}">username*</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Created date:</label>
+                <div class="col-sm-10">
+                    <p class="form-control-static" th:text="${post.createdDate}">created date*</p>
+                </div>
+            </div>
+            <a class="btn btn-primary" th:href="@{/posts}">Posts</a>
+            <div sec:authorize="isAuthenticated()">
+                <a class="btn btn-primary" th:href="${'/post/edit/'+post.id}"><i class="fa fa-pencil"></i> Edit</a>
+                <a class="btn btn-danger" th:href="${'/post/delete/'+post.id}"><i class="fa fa-trash-o"></i> Delete</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div th:replace="layout/layout::lfooter"></div>
+<th:block th:replace="layout/layout::assets"/>
+</body>
+</html>
