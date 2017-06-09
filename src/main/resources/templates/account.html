@@ -7,9 +7,43 @@
 <div th:replace="layout/layout::lheader('account')"></div>
 
 <div class="container">
-    <div class="alert alert-info">
-        You need to be logged in to view your account: <a th:href="@{/login}"><b>Click here to log in</b></a>
+    <div sec:authorize="isAuthenticated()">
+        <h2>Account Info</h2>
+        <div>
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Account id:</label>
+                    <div class="col-sm-10">
+                        <p class="form-control-static" th:text="${account.id}">account id*</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Username:</label>
+                    <div class="col-sm-10">
+                        <p class="form-control-static" th:text="${account.username}">username*</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">User type:</label>
+                    <div class="col-sm-10">
+                        <p class="form-control-static" th:text="${account.userType}">username*</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Created Date:</label>
+                    <div class="col-sm-10">
+                        <p class="form-control-static" th:text="${#temporals.format(account.userCreatedDate, 'dd MMM yyyy')}">created date*</p>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
+    <div sec:authorize="not isAuthenticated()">
+        <div class="alert alert-info">
+            You need to be logged in to view your account: <a th:href="@{/login}"><b>Click here to log in</b></a>
+        </div>
+    </div>
+
 </div>
 
 <div th:replace="layout/layout::lfooter"></div>

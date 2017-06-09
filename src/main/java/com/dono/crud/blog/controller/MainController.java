@@ -40,7 +40,8 @@ public class MainController extends MyAbstractController{
     }
 
     @GetMapping("/account")
-    public String account() {
+    public String account(Model model) {
+        model.addAttribute("account", readerService.getOne(getPrincipal()));
         return "account";
     }
 

@@ -47,6 +47,7 @@
                         <a th:href="@{/users}"><i class="fa fa-list"></i> Users</a>
                     </li>
                 </ul>
+
                 <ul class="nav navbar-nav navbar-right" sec:authorize="isAuthenticated()">
                     <li>
                         <a th:href="@{/account}"><i class="fa fa-user"></i> <b
