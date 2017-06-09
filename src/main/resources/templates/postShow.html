@@ -22,9 +22,9 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-2 control-label">Price:</label>
+                <label for="textarea" class="col-sm-2 control-label">Post body:</label>
                 <div class="col-sm-10">
-                    <p class="form-control-static" th:text="${post.body}">Body*</p>
+                    <textarea readonly id="textarea" class="form-control" th:text="${post.body}" cols="30" rows="10">Body*</textarea>
                 </div>
             </div>
             <div class="form-group">
@@ -39,8 +39,8 @@
                     <p class="form-control-static" th:text="${post.createdDate}">created date*</p>
                 </div>
             </div>
-            <a class="btn btn-primary" th:href="@{/posts}">Posts</a>
-            <div sec:authorize="isAuthenticated()">
+            <a class="btn btn-primary" th:href="@{/posts}">Back</a>
+            <div sec:authorize="isAuthenticated()" id="submit2">
                 <a class="btn btn-primary" th:href="${'/post/edit/'+post.id}"><i class="fa fa-pencil"></i> Edit</a>
                 <a class="btn btn-danger" th:href="${'/post/delete/'+post.id}"><i class="fa fa-trash-o"></i> Delete</a>
             </div>

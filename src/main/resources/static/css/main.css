@@ -126,28 +126,16 @@ body>main:after {
     clear: both;
 }
 
-/*pagination*/
-.pagination.dark {
-    background: #414449;
-    color: #feffff;
+/*textarea position*/
+#submit1, #submit2 {
+    float:right;
+    margin-right: 20px;
 }
 
-.page.dark {
-    border: solid 1px #32373b;
-    background: #3e4347;
-    box-shadow: inset 0px 1px 1px rgba(255,255,255, .1), 0px 1px 3px rgba(0,0,0, .1);
-    color: #feffff;
-    text-shadow: 0px 1px 0px rgba(0,0,0, .5);
+article {
+    margin-bottom: 30px;
 }
 
-.page.dark:hover, .page.dark.gradient:hover {
-    background: #3d4f5d;
-    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#547085), to(#3d4f5d));
-    background: -moz-linear-gradient(0% 0% 270deg,#547085, #3d4f5d);
-}
-
-.page.dark.active {
-    border: none;
-    background: #2f3237;
-    box-shadow: inset 0px 0px 8px rgba(0,0,0, .5), 0px 1px 0px rgba(255,255,255, .1);
+#posts{
+    margin-bottom: 40px;
 }

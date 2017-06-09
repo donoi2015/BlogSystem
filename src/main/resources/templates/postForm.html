@@ -25,7 +25,8 @@
                     <textarea class="form-control" name="body" id="textarea" cols="30" rows="10" th:field="*{body}"></textarea>
                 </div>
             </div>
-            <div class="row">
+            <div class="form-group" id="submit1">
+                <a class="btn btn-default" th:href="@{/posts}">Cancel</a>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </div>
         </form>
