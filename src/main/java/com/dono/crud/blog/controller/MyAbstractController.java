@@ -1,6 +1,5 @@
 package com.dono.crud.blog.controller;
 
-import com.dono.crud.blog.repository.ReaderRepository;
 import com.dono.crud.blog.service.PostsService;
 import com.dono.crud.blog.service.ReaderService;
 import org.springframework.beans.factory.annotation.Autowired;

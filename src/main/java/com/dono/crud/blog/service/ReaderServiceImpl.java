@@ -1,9 +1,9 @@
 package com.dono.crud.blog.service;
 
 import com.dono.crud.blog.model.Reader;
-import com.dono.crud.blog.repository.PostRepository;
 import com.dono.crud.blog.repository.ReaderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,6 +13,9 @@ public class ReaderServiceImpl implements ReaderService {
 
     @Autowired
     ReaderRepository readerRepository;
+
+    @Autowired
+    PasswordEncoder passwordEncoder;
 
     @Override
     public List<Reader> getAll() {
@@ -31,6 +34,7 @@ public class ReaderServiceImpl implements ReaderService {
 
     @Override
     public void save(Reader reader) {
+        reader.setPassword(passwordEncoder.encode(reader.getPassword()));
         readerRepository.save(reader);
     }
 

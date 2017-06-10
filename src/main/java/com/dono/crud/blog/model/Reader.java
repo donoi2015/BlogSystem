@@ -2,7 +2,6 @@ package com.dono.crud.blog.model;
 
 
 import lombok.*;
-import org.apache.tomcat.jni.Local;
 
 import javax.persistence.*;
 import java.io.Serializable;

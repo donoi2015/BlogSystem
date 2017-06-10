@@ -15,19 +15,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-@Service
+@Service("myservice")
 public class UserDetailsServiceImpl implements UserDetailsService {
 
-    private final ReaderRepository repository;
+    private final
+    ReaderService readerService;
 
     @Autowired
-    public UserDetailsServiceImpl(ReaderRepository repository) {
-        this.repository = repository;
+    public UserDetailsServiceImpl(ReaderService readerService) {
+        this.readerService = readerService;
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Reader reader = repository.findByUsername(username);
+        Reader reader = readerService.getOne(username);
         return new User(reader.getUsername(), reader.getPassword(), getGrantedAuthorities(reader));
     }
 
