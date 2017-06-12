@@ -44,5 +44,4 @@ public class Reader implements Serializable {
         return posts.size();
     }
 
-
 }

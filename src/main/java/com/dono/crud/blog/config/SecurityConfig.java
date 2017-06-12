@@ -55,7 +55,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
         http.authorizeRequests()
                 .antMatchers("/", "/home").permitAll()
                 .antMatchers("/admin").hasAnyRole("ADMIN", "READER")
-                .antMatchers("/reader").hasRole("READER")
+                .antMatchers("/user").hasRole("READER")
                 .and().formLogin().loginPage("/login")
                 .and().rememberMe()
                     .rememberMeParameter("remember-me")
@@ -65,6 +65,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
                 .and().exceptionHandling().accessDeniedPage("/denied");
     }
 
+    //for remember-me, can be jdbc or hibernate implementation
     @Bean
     public PersistentTokenRepository  getPersistentTokenBasedRememberMeServices() {
         JdbcTokenRepositoryImpl tokenRepositoryImpl = new JdbcTokenRepositoryImpl();
