@@ -118,7 +118,7 @@ body>main:after {
 }
 
 /*textarea position*/
-#submit1, #submit2 {
+#submit1, #submit2, #submit3 {
     float:right;
     margin-right: 20px;
 }

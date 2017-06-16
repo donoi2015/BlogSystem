@@ -14,4 +14,5 @@ public class PasswordMatchingValidator implements ConstraintValidator<PasswordsM
     public boolean isValid(ReaderForm value, ConstraintValidatorContext context) {
         return (value.getPassword().equals(value.getConfirmPassword()));
     }
+
 }

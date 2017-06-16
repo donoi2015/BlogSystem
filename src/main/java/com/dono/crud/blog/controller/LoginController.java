@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 @Controller
 public class LoginController extends MyAbstractController {
 
+
+
     @GetMapping("/login")
     public String login() {
         return "login";

@@ -3,6 +3,7 @@ package com.dono.crud.blog.controller;
 import com.dono.crud.blog.model.Reader;
 import com.dono.crud.blog.validation.ReaderForm;
 import com.dono.crud.blog.model.UserType;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,15 +15,6 @@ import java.util.List;
 
 @Controller
 public class UserController extends MyAbstractController {
-
-
-//    @Autowired
-//    ReaderFormValidator readerFormValidator;
-
-//    @InitBinder
-//    public void initBind(WebDataBinder webDataBinder) {
-//        webDataBinder.addValidators(readerFormValidator);
-//    }
 
     @GetMapping("/users")
     public String users(Model model) {
@@ -53,13 +45,15 @@ public class UserController extends MyAbstractController {
 
         readerService.save(reader);
         model.addAttribute("success", "User '" + readerForm.getUsername() + "' successfully registered.");
+        model.addAttribute("registered", true);
         return "login";
     }
 
+    @Secured("ROLE_ADMIN")
     @GetMapping("user/delete/{username}")
     public String deleteUser(@PathVariable String username) {
         readerService.delete(readerService.getOne(username));
-        return "users";
+        return "redirect:/users";
     }
 
 }

@@ -1,6 +1,5 @@
 package com.dono.crud.blog.model;
 
-
 import lombok.*;
 
 import javax.persistence.*;
@@ -8,7 +7,6 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
 
 @Entity
 @Getter

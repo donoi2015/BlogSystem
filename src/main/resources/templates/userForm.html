@@ -5,8 +5,8 @@
 </head>
 <body>
 <div th:replace="layout/layout::lheader('register')"></div>
-
 <div class="container">
+<div th:if="${success}"  th:text="${success}" class="alert alert-info">Alert box*</div>
     <h2>Create user:</h2>
     <div>
         <form class="form-horizontal col-md-5" th:object="${readerForm}" th:action="@{/user/new}" method="post">
